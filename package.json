@@ -1,0 +1,16 @@
+{
+  "name": "aliados-del-sol-hub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Aliados del Sol — programa de aliados de GEENERA. Sitio estático (Design Components + runtime propio).",
+  "scripts": {
+    "dev": "npx --yes serve . -l 4173",
+    "start": "npx --yes serve . -l 4173",
+    "build": "node scripts/build.mjs",
+    "bundle": "echo \"Genera un HTML autocontenido desde Claude (Guardar como HTML standalone)\""
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED"
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+@keyframes gBreath { 0%,100% { opacity:.5; transform:scale(1) } 50% { opacity:.8; transform:scale(1.06) } }
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="display:flex;align-items:center;gap:{{ gap }};flex-direction:{{ dir }};font-family:'Titillium Web',system-ui,sans-serif;width:max-content;max-width:100%">
+  <div style="position:relative;width:{{ size }}px;height:{{ size }}px;flex:none">
+    <div ref="{{ haloRef }}" style="position:absolute;left:-30%;top:-30%;width:160%;height:160%;border-radius:50%;background:radial-gradient(circle,rgba(255,202,5,.26) 0%,rgba(249,165,26,.12) 40%,rgba(243,121,32,0) 70%);opacity:.35;transition:opacity 700ms ease,transform 900ms cubic-bezier(.22,.61,.36,1);pointer-events:none;will-change:opacity,transform"></div>
+    <div style="position:absolute;inset:0;background:var(--w-08,rgba(255,255,255,.08));-webkit-mask:url(assets/g-geenera.png) center/contain no-repeat;mask:url(assets/g-geenera.png) center/contain no-repeat"></div>
+    <div ref="{{ fillRef }}" style="position:absolute;inset:0;background:conic-gradient(from 0deg,rgba(255,202,5,0) 0deg,rgba(255,202,5,0) 90deg,transparent 90deg,transparent 360deg,#F9A51A 360deg,#FFCA05 360deg);-webkit-mask:url(assets/g-geenera.png) center/contain no-repeat;mask:url(assets/g-geenera.png) center/contain no-repeat;will-change:background"></div>
+    <div ref="{{ headRef }}" style="position:absolute;left:50%;top:50%;width:{{ headSize }}px;height:{{ headSize }}px;margin:calc({{ headSize }}px / -2);border-radius:50%;background:radial-gradient(circle,rgba(255,230,120,.95),rgba(255,202,5,.35) 55%,rgba(255,202,5,0) 75%);opacity:0;pointer-events:none;will-change:transform,opacity"></div>
+    <sc-if value="{{ inGap }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;right:-4%;top:41%;bottom:0;width:58%;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-start;gap:1px;text-align:right;pointer-events:none;padding-right:2%">
+        <div ref="{{ pctRef }}" style="font-size:{{ pctSize }}px;font-weight:700;letter-spacing:-.05em;line-height:.9;color:var(--fg,#F2F0EC);font-variant-numeric:tabular-nums">{{ pctLabel }}</div>
+        <div style="font-size:{{ subSize }}px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--gold,#8E7A45);line-height:1.2;max-width:11ch">{{ subLabel }}</div>
+      </div>
+    </sc-if>
+  </div>
+  <sc-if value="{{ editorial }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+      <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+        <span ref="{{ pctRef }}" style="font-size:{{ edSize }}px;font-weight:700;letter-spacing:-.05em;line-height:.9;color:var(--fg,#F2F0EC);font-variant-numeric:tabular-nums">{{ pctLabel }}</span>
+        <span style="font-size:15px;color:var(--mut,#9A968F)">de camino a <b style="font-weight:600;color:var(--y,#FFCA05)">{{ target }}</b></span>
+      </div>
+      <div style="font-size:14px;color:var(--t3,#B4B0A9)">{{ detail }}</div>
+      <div style="font-size: 12px; color: var(--mut4,#6B6762); max-width: 30ch; line-height: 1.4; display: none">{{ note }}</div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:520,&quot;height&quot;:320},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;gap&quot;,&quot;tsType&quot;:&quot;'gap'|'editorial'|'mark'&quot;,&quot;options&quot;:[&quot;gap&quot;,&quot;editorial&quot;,&quot;mark&quot;]},&quot;size&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:220,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:80,&quot;max&quot;:520,&quot;unit&quot;:&quot;px&quot;},&quot;pct&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.62,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.01},&quot;sweep&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:270,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:180,&quot;max&quot;:300,&quot;unit&quot;:&quot;deg&quot;},&quot;duration&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:900,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:1,&quot;max&quot;:3000,&quot;unit&quot;:&quot;ms&quot;},&quot;label&quot;:{&quot;editor&quot;:null,&quot;default&quot;:null,&quot;tsType&quot;:&quot;string|null&quot;},&quot;subLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Círculo Solar&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;target&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;detail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;620 / 1.000 Puntos Sol&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;note&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;stack&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+/* GProgress v2 — la cifra forma parte de la composición.
+   variant 'gap'      → el porcentaje vive en el corte de la G (Opción A); el extremo iluminado lo acompaña.
+   variant 'editorial'→ G a la izquierda, cifra + contexto a la derecha (Opción C, desktop/Hub).
+   variant 'mark'     → solo la G (modales, estados vacíos).
+   Anima 0→pct al entrar en viewport (≤ 900 ms). Al 100 %: cuarto interior + halo, sin confeti. */
+class Component extends DCLogic {
+  reduced = typeof window !== 'undefined' && !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  live(el) { return el && document.contains(el) ? el : null; }
+  target() { return Math.max(0, Math.min(1, Number(this.props.pct ?? 0.62))); }
+  ensure() { if (this._poll) return; this._poll = setInterval(() => this.tick(), 32); }
+  componentWillUnmount() { clearInterval(this._poll); this._poll = null; }
+  tick() {
+    const root = this.live(this.root); if (!root) return;
+    const r = root.getBoundingClientRect();
+    const visible = r.bottom > 0 && r.top < window.innerHeight;
+    const target = this.target();
+    if (this._target !== target) { this._target = target; this._start = null; this._from = this._v || 0; }
+    if (!visible && this._v == null) return;
+    if (this._start == null) this._start = performance.now();
+    const dur = this.reduced ? 1 : (this.props.duration ?? 900);
+    const t = Math.min(1, (performance.now() - this._start) / dur);
+    const e = 1 - Math.pow(1 - t, 3);
+    const v = this._from + (target - this._from) * e;
+    if (Math.abs(v - (this._v || -1)) < 0.0005 && t >= 1) return;
+    this._v = v;
+    this.paint(v, t >= 1);
+  }
+  paint(v, settled) {
+    const sweep = Number(this.props.sweep ?? 270);
+    const A = 360 - v * sweep;
+    const done = v >= 0.999;
+    const q = done ? '#FFCA05' : 'rgba(255,202,5,0)';
+    const fill = this.live(this.fill);
+    if (fill) fill.style.background = 'conic-gradient(from 0deg,' + q + ' 0deg,' + q + ' 90deg,transparent 90deg,transparent ' + A.toFixed(1) + 'deg,#F9A51A ' + A.toFixed(1) + 'deg,#FFCA05 360deg)';
+    const halo = this.live(this.halo);
+    if (halo) {
+      halo.style.opacity = (done ? 0.95 : 0.3 + 0.45 * v).toFixed(2);
+      halo.style.transform = 'scale(' + (done && !settled ? 1.16 : 1 + 0.08 * v).toFixed(3) + ')';
+      halo.style.animation = done && settled && !this.reduced ? 'gBreath 4s ease-in-out infinite' : 'none';
+    }
+    const head = this.live(this.head);
+    if (head) {
+      const size = Number(this.props.size ?? 220);
+      const rad = size * 0.44;
+      const ang = (-v * sweep) * Math.PI / 180;
+      const x = Math.sin(ang) * rad, y = -Math.cos(ang) * rad;
+      head.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+      head.style.opacity = (v > 0.02 && !done ? 0.9 : 0).toFixed(2);
+    }
+    const pct = this.live(this.pctEl);
+    if (pct && this.props.label == null) pct.textContent = Math.round(v * 100) + '%';
+  }
+  renderVals() {
+    this.ensure();
+    const size = Number(this.props.size ?? 220);
+    const variant = this.props.variant || 'gap';
+    const pctLabel = this.props.label ?? (Math.round(this.target() * 100) + '%');
+    return {
+      size, headSize: Math.max(10, Math.round(size * 0.09)),
+      pctSize: Math.round(size * 0.2), subSize: Math.max(9, Math.round(size * 0.046)),
+      edSize: Math.max(40, Math.round(size * 0.34)),
+      pctLabel,
+      subLabel: this.props.subLabel ?? 'Círculo Solar',
+      target: this.props.target ?? this.props.subLabel ?? 'Círculo Solar',
+      detail: this.props.detail ?? '', note: this.props.note ?? '',
+      inGap: variant === 'gap', editorial: variant === 'editorial',
+      dir: this.props.stack ? 'column' : 'row', gap: variant === 'editorial' ? 'clamp(18px,3vw,36px)' : '0',
+      rootRef: (el) => { this.root = el; },
+      haloRef: (el) => { this.halo = el; },
+      fillRef: (el) => { this.fill = el; },
+      headRef: (el) => { this.head = el; },
+      pctRef: (el) => { if (el) this.pctEl = el; }
+    };
+  }
+}
+</script>
+</body>
+</html>
